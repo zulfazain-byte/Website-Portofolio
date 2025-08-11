@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Silvi Amalia Rizki | Kebidanan & Edukasi Digital</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom styles for a more professional and modern look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* Off-white background for a softer feel */
+            color: #343A40; /* Darker gray for better readability */
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #fdf2f8 0%, #f0f9ff 100%); /* Softer pink and blue gradient */
+        }
+        .section-title {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 800;
+            color: #0c2f5a; /* Deeper blue for headings */
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: #ec4899; /* Vibrant pink accent */
+            border-radius: 3px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem; /* 20px */
+            width: 3px;
+            height: 100%;
+            background-color: #dbeafe;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem; /* 64px */
+            padding-bottom: 2.5rem; /* 40px */
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 1.25rem; /* 20px */
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background-color: #ec4899;
+            border: 5px solid #F8F9FA;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .value-card, .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        .value-card:hover, .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(12, 47, 90, 0.1);
+        }
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Spinner */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border-left-color: #fff;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Scroll to top button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-blue-900">
+                <!-- Logo Kebidanan SVG -->
+                <svg class="w-12 h-12 text-pink-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 1.94.78 3.7 2.05 4.95L5.22 16.78C4.46 18.3 5.51 20 7.18 20H9v-2H7.18c-.47 0-.76-.53-.51-.95l1.6-2.84A6.955 6.955 0 0012 16c3.87 0 7-3.13 7-7s-3.13-7-7-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="#ec4899"/>
+                    <path d="M12 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#0c2f5a"/>
+                    <path d="M18.78 16.78L17 14.14v-2.1c1.19-.81 2-2.17 2-3.71C19 5.13 15.87 2 12 2v2c2.76 0 5 2.24 5 5 0 1.05-.33 2.02-.89 2.83l.03.04L18.49 16.05c.25.42-.04.95-.51.95H15v2h2.18c1.67 0 2.72-1.7.96-3.22z" fill="#ec4899" opacity="0.6"/>
+                </svg>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#profil" class="text-gray-600 hover:text-pink-600 transition font-medium">Profil</a>
+                <a href="#keunggulan" class="text-gray-600 hover:text-pink-600 transition font-medium">Keunggulan</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-pink-600 transition font-medium">Portfolio</a>
+                <a href="#pengalaman" class="text-gray-600 hover:text-pink-600 transition font-medium">Pengalaman</a>
+                <a href="#edukasi" class="text-gray-600 hover:text-pink-600 transition font-medium">Edukasi</a>
+                <a href="#kontak" class="bg-pink-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-pink-700 transition shadow-lg hover:shadow-xl">Kontak</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-blue-900"><i data-lucide="menu" class="w-7 h-7"></i></button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden flex-col items-center space-y-4 py-4 bg-white border-t border-gray-200">
+             <a href="#profil" class="text-gray-600 block w-full text-center py-2">Profil</a>
+             <a href="#keunggulan" class="text-gray-600 block w-full text-center py-2">Keunggulan</a>
+             <a href="#portfolio" class="text-gray-600 block w-full text-center py-2">Portfolio</a>
+             <a href="#pengalaman" class="text-gray-600 block w-full text-center py-2">Pengalaman</a>
+             <a href="#edukasi" class="text-gray-600 block w-full text-center py-2">Edukasi</a>
+             <a href="#kontak" class="bg-pink-600 text-white px-6 py-2 rounded-full mt-2">Kontak</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient">
+            <div class="container mx-auto px-6 py-28 md:py-36 flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 text-center md:text-left mb-12 md:mb-0">
+                    <h2 class="font-bold text-pink-600 text-2xl tracking-wider">SILVI AMALIA RIZKI</h2>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight mt-2 mb-4">Bidan Generasi Baru: Ahli Klinis, Kreator Digital.</h1>
+                    <p class="mt-4 text-lg text-gray-700 max-w-2xl">Sebagai Sarjana Terapan Kebidanan dari Universitas Padjadjaran (IPK 3.67), saya memiliki fondasi klinis yang kuat dan semangat untuk berinovasi. Saya berdedikasi untuk memberikan asuhan kebidanan yang komprehensif dan aman, sekaligus memanfaatkan kekuatan media digital untuk menciptakan konten edukasi yang mudah diakses, menarik, dan berdampak luas bagi kesehatan ibu dan anak di seluruh Indonesia.</p>
+                    <div class="mt-10 flex justify-center md:justify-start space-x-4">
+                        <a href="#kontak" class="bg-blue-800 text-white px-7 py-3 rounded-full font-bold hover:bg-blue-900 transition shadow-xl hover:scale-105 transform">Hubungi Saya</a>
+                        <a href="#portfolio" class="bg-white text-blue-800 px-7 py-3 rounded-full font-bold hover:bg-gray-50 transition shadow-xl hover:scale-105 transform">Lihat Karya Saya</a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -top-8 -left-8 w-32 h-32 bg-pink-200 rounded-full opacity-50"></div>
+                        <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-200 rounded-full opacity-50"></div>
+                        <img src="https://placehold.co/400x400/fdf2f8/0c2f5a?text=Foto+Profil" alt="Foto Profil Silvi Amalia Rizki" class="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-8 border-white shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Proposition Section -->
+        <section id="keunggulan" class="py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title fade-in">Keunggulan Saya</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-16 fade-in">Saya menawarkan lebih dari sekadar asuhan kebidanan standar. Saya membawa kombinasi unik yang siap memberikan nilai tambah.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="value-card bg-white p-8 rounded-xl shadow-lg fade-in">
+                        <div class="bg-pink-100 text-pink-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="stethoscope" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Klinis & Digital</h3>
+                        <p class="text-gray-600">Menguasai praktik klinis komprehensif sekaligus terampil dalam pembuatan konten digital (Canva, Capcut, SEO).</p>
+                    </div>
+                    <div class="value-card bg-white p-8 rounded-xl shadow-lg fade-in" style="transition-delay: 150ms;">
+                        <div class="bg-blue-100 text-blue-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="presentation" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Komunikasi & Edukasi</h3>
+                        <p class="text-gray-600">Terlatih menyampaikan informasi kesehatan secara efektif, empatik, dan mudah dipahami di depan audiens.</p>
+                    </div>
+                    <div class="value-card bg-white p-8 rounded-xl shadow-lg fade-in" style="transition-delay: 300ms;">
+                        <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="lightbulb" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Inovatif & Proaktif</h3>
+                        <p class="text-gray-600">Memiliki inisiatif untuk memanfaatkan teknologi AI guna efisiensi dan peningkatan kualitas layanan kebidanan.</p>
+                    </div>
+                     <div class="value-card bg-white p-8 rounded-xl shadow-lg fade-in" style="transition-delay: 450ms;">
+                        <div class="bg-yellow-100 text-yellow-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="users-2" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Kerja Sama Tim</h3>
+                        <p class="text-gray-600">Mampu berkolaborasi secara solid dengan rekan sejawat dan tenaga kesehatan lain untuk mencapai tujuan bersama.</p>
+                    </div>
+                     <div class="value-card bg-white p-8 rounded-xl shadow-lg fade-in" style="transition-delay: 600ms;">
+                        <div class="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="clipboard-check" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Dokumentasi Teliti</h3>
+                        <p class="text-gray-600">Memastikan semua data dan tindakan tercatat secara akurat, lengkap, dan sistematis sesuai standar.</p>
+                    </div>
+                     <div class="value-card bg-white p-8 rounded-xl shadow-lg fade-in" style="transition-delay: 750ms;">
+                        <div class="bg-red-100 text-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="clock" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Manajemen Waktu</h3>
+                        <p class="text-gray-600">Pandai mengatur prioritas dan mengelola waktu untuk memberikan asuhan yang efisien dan tepat waktu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Portfolio Section -->
+        <section id="portfolio" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title fade-in">Portfolio Karya Digital</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-16 fade-in">Berikut adalah beberapa contoh bagaimana saya mengaplikasikan keterampilan digital saya dalam konteks edukasi kesehatan.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in">
+                        <img src="https://placehold.co/600x400/ec4899/ffffff?text=Contoh+Infografis" alt="Contoh Infografis" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <span class="text-sm font-semibold text-pink-600">Canva</span>
+                            <h3 class="text-lg font-bold text-blue-900 mt-1">Desain Infografis Edukatif</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Membuat materi visual yang menarik dan mudah dipahami tentang topik-topik seperti gizi ibu hamil, tanda bahaya, dll.</p>
+                        </div>
+                    </div>
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Contoh+Video" alt="Contoh Video Edukasi" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <span class="text-sm font-semibold text-blue-600">Capcut</span>
+                            <h3 class="text-lg font-bold text-blue-900 mt-1">Video Edukasi Singkat</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Mengedit video pendek untuk media sosial yang menjelaskan tips praktis seperti cara menyusui atau senam hamil.</p>
+                        </div>
+                    </div>
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in" style="transition-delay: 400ms;">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=Contoh+Artikel" alt="Contoh Artikel SEO" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <span class="text-sm font-semibold text-green-600">SEO</span>
+                            <h3 class="text-lg font-bold text-blue-900 mt-1">Penulisan Artikel SEO-Friendly</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Menyusun artikel kesehatan yang dioptimalkan untuk mesin pencari agar dapat menjangkau audiens yang lebih luas.</p>
+                        </div>
+                    </div>
+                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden fade-in" style="transition-delay: 600ms;">
+                        <img src="http://googleusercontent.com/file_content/1" alt="E-Book Perencanaan Kehamilan" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <span class="text-sm font-semibold text-purple-600">E-Book</span>
+                            <h3 class="text-lg font-bold text-blue-900 mt-1">E-Book: Perencanaan Kehamilan</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Menulis dan mendesain e-book panduan komprehensif bagi pasangan yang merencanakan kehamilan sehat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="pengalaman" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center fade-in">Pengalaman</h2>
+                <div class="max-w-3xl mx-auto mt-12 fade-in">
+                    <div class="relative timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="relative">
+                                <p class="text-sm font-medium text-gray-500 mb-1">Desember 2024 - Januari 2025</p>
+                                <h3 class="text-xl font-bold text-blue-800">Praktik Asuhan Komunitas</h3>
+                                <p class="text-md font-semibold text-gray-700 mb-3">Desa Cileles, Sumedang</p>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>Melakukan kunjungan rumah kepada ibu hamil, nifas, dan balita.</li>
+                                    <li>Menyelenggarakan edukasi kelompok tentang gizi, KB, dan kesehatan reproduksi.</li>
+                                    <li>Berkolaborasi dengan kader desa dalam kegiatan posyandu dan pemetaan kesehatan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="relative">
+                                <p class="text-sm font-medium text-gray-500 mb-1">Maret – Mei 2024</p>
+                                <h3 class="text-xl font-bold text-blue-800">Praktik Klinik Kebidanan</h3>
+                                <p class="text-md font-semibold text-gray-700 mb-3">RSUD R. Syamsudin, SH, Sukabumi</p>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>Menangani kasus persalinan normal dengan supervisi preseptor.</li>
+                                    <li>Membantu tindakan kegawatdaruratan obstetri seperti preeklampsia dan perdarahan.</li>
+                                    <li>Melakukan pendokumentasian SOAP dan rekam medis pasien secara lengkap.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="relative">
+                                <p class="text-sm font-medium text-gray-500 mb-1">September - November 2023</p>
+                                <h3 class="text-xl font-bold text-blue-800">Praktik Klinik Kebidanan</h3>
+                                <p class="text-md font-semibold text-gray-700 mb-3">Puskesmas Tanjungsari, Sumedang</p>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>Memberikan asuhan antenatal, intranatal, dan postnatal kepada ibu hamil dan ibu bersalin.</li>
+                                    <li>Melakukan pemantauan tumbuh kembang balita dan imunisasi.</li>
+                                    <li>Terlibat dalam penyuluhan kesehatan di posyandu dan masyarakat.</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="relative">
+                                <p class="text-sm font-medium text-gray-500 mb-1">Juni - Juli 2022</p>
+                                <h3 class="text-xl font-bold text-blue-800">Praktik Keterampilan Dasar Kebidanan</h3>
+                                <p class="text-md font-semibold text-gray-700 mb-3">RSUP Dr. Hasan Sadikin, Bandung</p>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>Mempraktikkan keterampilan dasar kebidanan seperti pengukuran tanda-tanda vital, pemeriksaan fisik, pemasangan oksigen, infus, pengambilan darah, dan penatalaksanaan dasar pada pasien.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AI Features Section -->
+        <section id="edukasi" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title fade-in">Generator Konten Edukasi</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-16 fade-in">Ini adalah konten edukasi seputar kebidanan yang dikembangkan untuk menunjukkan bagaimana teknologi AI dapat membantu bidan bekerja lebih efisien. Silakan dicoba.</p>
+                <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg fade-in">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-6">Generator Konten Edukasi</h3>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="text" id="ai-topic-input" placeholder="Topik: Manfaat ASI Eksklusif" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-400 focus:border-transparent transition">
+                        <button id="generate-content-btn" class="bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition shadow-md flex items-center justify-center space-x-2 w-full sm:w-auto">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            <span id="btn-text">Buat Konten</span>
+                            <div id="btn-loader" class="spinner hidden"></div>
+                        </button>
+                    </div>
+                    <div id="ai-result-container" class="mt-6 text-left p-6 bg-gray-100 rounded-lg border border-gray-200 min-h-[150px] whitespace-pre-wrap transition hidden"></div>
+                    <p id="ai-error-message" class="text-red-500 mt-4 text-sm hidden"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak" class="py-24 bg-blue-900 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-extrabold fade-in">Siap Berkontribusi & Berkolaborasi.</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-blue-200 fade-in">Mari diskusikan bagaimana saya dapat menjadi aset berharga bagi tim Anda. Hubungi saya melalui kanal di bawah ini.</p>
+                <div class="mt-10 flex flex-wrap justify-center gap-6 fade-in">
+                    <a href="mailto:silviamaliarizki@gmail.com" class="bg-white/10 hover:bg-white/20 transition text-white font-semibold py-3 px-6 rounded-full flex items-center space-x-3"><i data-lucide="mail" class="w-5 h-5"></i><span>silviamaliarizki@gmail.com</span></a>
+                    <a href="tel:+6289628288527" class="bg-white/10 hover:bg-white/20 transition text-white font-semibold py-3 px-6 rounded-full flex items-center space-x-3"><i data-lucide="phone" class="w-5 h-5"></i><span>0896-2828-8527</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-600">
+            <p>&copy; <span id="year"></span> Silvi Amalia Rizki. Didesain dan dikembangkan dengan penuh dedikasi.</p>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="bg-pink-600 text-white p-3 rounded-full shadow-lg hover:bg-pink-700 transition"><i data-lucide="arrow-up" class="w-6 h-6"></i></button>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+        document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(link.getAttribute('href').startsWith('#')) {
+                    if (mobileMenu.classList.contains('flex')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                    }
+                }
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Fade-in animation on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.onscroll = () => {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Gemini AI Assistant Logic ---
+        const generateBtn = document.getElementById('generate-content-btn');
+        const topicInput = document.getElementById('ai-topic-input');
+        const resultContainer = document.getElementById('ai-result-container');
+        const errorMessage = document.getElementById('ai-error-message');
+        const btnText = document.getElementById('btn-text');
+        const btnLoader = document.getElementById('btn-loader');
+
+        generateBtn.addEventListener('click', async () => {
+            const topic = topicInput.value.trim();
+            if (!topic) {
+                errorMessage.textContent = 'Silakan masukkan topik terlebih dahulu.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            generateBtn.disabled = true;
+            errorMessage.classList.add('hidden');
+            resultContainer.classList.add('hidden');
+
+            try {
+                const prompt = `Anda adalah seorang bidan dan edukator kesehatan yang ramah di Indonesia. Buatlah sebuah artikel edukasi singkat dan padat (sekitar 100-150 kata) dalam bahasa Indonesia yang mudah dipahami oleh masyarakat awam. Topiknya adalah: "${topic}". Gunakan gaya bahasa yang positif, informatif, dan menyemangati. Sertakan judul yang menarik dalam format H3 bold, dan gunakan paragraf biasa untuk isinya.`;
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!response.ok) throw new Error(`API request failed: ${response.statusText}`);
+                const result = await response.json();
+                
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    // Sanitize and format the text to basic HTML
+                    let generatedText = result.candidates[0].content.parts[0].text;
+                    generatedText = generatedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
+                    generatedText = generatedText.replace(/\n/g, '<br>'); // Newlines
+                    resultContainer.innerHTML = `<p class="text-gray-700">${generatedText}</p>`;
+                    resultContainer.classList.remove('hidden');
+                } else {
+                    throw new Error('Respons dari AI tidak valid.');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                errorMessage.textContent = 'Maaf, terjadi kesalahan saat membuat konten. Silakan coba lagi.';
+                errorMessage.classList.remove('hidden');
+            } finally {
+                btnText.classList.remove('hidden');
+                btnLoader.classList.add('hidden');
+                generateBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
