@@ -1,0 +1,82 @@
+/* Custom styles for a more professional and modern look */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8F9FA; /* Off-white background for a softer feel */
+    color: #343A40; /* Darker gray for better readability */
+    scroll-behavior: smooth;
+}
+.hero-gradient {
+    background: linear-gradient(135deg, #fdf2f8 0%, #f0f9ff 100%); /* Softer pink and blue gradient */
+}
+.section-title {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 800;
+    color: #0c2f5a; /* Deeper blue for headings */
+    position: relative;
+    padding-bottom: 0.75rem;
+    margin-bottom: 3rem;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background-color: #ec4899; /* Vibrant pink accent */
+    border-radius: 3px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.25rem; /* 20px */
+    width: 3px;
+    height: 100%;
+    background-color: #dbeafe;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 4rem; /* 64px */
+    padding-bottom: 2.5rem; /* 40px */
+}
+.timeline-dot {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 1.25rem; /* 20px */
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background-color: #ec4899;
+    border: 5px solid #F8F9FA;
+    border-radius: 50%;
+    z-index: 1;
+}
+.value-card, .project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+.value-card:hover, .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(12, 47, 90, 0.1);
+}
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Scroll to top button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 100;
+}
